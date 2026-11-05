@@ -1,0 +1,13 @@
+# The hub's publisher manifest (https://hub.wolos.org, docs/WOLHUB-TOML.md in hub-worker).
+# The hub reads it at connect and at every release: this repository is a plugin, its release file is the .wolplug.
+schema = 1
+kind = "plugin"
+id = "wonderlandos.battery"
+license = "GPL-2.0-or-later"
+asset = "wonderlandos.battery-*.wolplug"
+homepage = "https://github.com/wonderlandos/battery"
+min_wolos = "0.13"
+name = "Battery Care"
+summary = "Battery health and charge cycles, and a reminder to unplug at the charge you choose."
+icon = "icon.png"
+screenshots = ["preview.webp"]
