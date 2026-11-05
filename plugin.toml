@@ -1,0 +1,28 @@
+# Battery Care: how worn the battery is (health, charge cycles, the capacity it has left) and a
+# reminder to unplug at the charge you choose, because a battery kept below about 80% lasts longer.
+# Data comes from `wol battery --json` through wol.run (permission "run"); the reminder is a
+# notification (permission "notifications").
+schema = 1
+id = "wonderlandos.battery"
+name = "Battery Care"
+version = "1.0"
+author = "WolOS"
+license = "GPL-2.0-or-later"
+description = "Battery health and charge cycles, and a reminder to unplug at the charge you choose."
+min_wolos = "0.13"
+permissions = ["run", "notifications"]
+icon = "icon.png"
+screenshots = ["preview.webp"]
+categories = ["Work"]
+homepage = "https://github.com/wonderlandos/battery"
+about = "Battery Care tells you how worn your laptop's battery is and helps it last longer.\n\nThe desktop card shows the battery's health: how much it holds now compared with when it was new, in watt-hours, and how many charge cycles it has been through.\n\nThe menu bar item reminds you to unplug the charger once the battery reaches the charge you choose (80% unless you change it), with one notification per charge. Click it to change the charge, turn the reminder off, or see the details.\n\nOn a computer without a battery it says so and does nothing else."
+
+[[menubar]]
+id = "bar"
+script = "bar.lua"
+side = "right"
+
+[[widget]]
+id = "card"
+script = "card.lua"
+sizes = ["small", "medium"]

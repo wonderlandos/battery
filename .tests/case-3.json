@@ -1,0 +1,41 @@
+{
+ "name": "no battery",
+ "script": "bar.lua",
+ "kind": "menubar",
+ "entry": "bar",
+ "run": {
+  "wol battery --json": [
+   "{\"present\": false}"
+  ]
+ },
+ "steps": [
+  {
+   "do": "render",
+   "now": [
+    2026,
+    11,
+    5,
+    4,
+    14,
+    0,
+    0
+   ]
+  },
+  {
+   "do": "popover"
+  }
+ ],
+ "expect": [
+  "battery-missing-symbolic",
+  "This computer has no battery."
+ ],
+ "absent": [
+  "notify:",
+  "ERROR"
+ ],
+ "plugin": "wonderlandos.battery",
+ "permissions": [
+  "run",
+  "notifications"
+ ]
+}

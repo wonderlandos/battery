@@ -1,0 +1,39 @@
+{
+ "name": "card shows health",
+ "script": "card.lua",
+ "kind": "widget",
+ "entry": "card",
+ "run": {
+  "wol battery --json": [
+   "{\"present\": true, \"percent\": 50, \"charge\": \"Discharging\", \"health\": 58, \"cycles\": 1, \"design_mwh\": null, \"full_mwh\": null}"
+  ]
+ },
+ "steps": [
+  {
+   "do": "render",
+   "now": [
+    2026,
+    11,
+    5,
+    4,
+    14,
+    0,
+    0
+   ]
+  }
+ ],
+ "expect": [
+  "58%",
+  "Worn out",
+  "1 charge cycle\"",
+  "Capacity unknown"
+ ],
+ "absent": [
+  "ERROR"
+ ],
+ "plugin": "wonderlandos.battery",
+ "permissions": [
+  "run",
+  "notifications"
+ ]
+}

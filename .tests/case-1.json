@@ -1,0 +1,62 @@
+{
+ "name": "bar reminds once per charge at 80%",
+ "script": "bar.lua",
+ "kind": "menubar",
+ "entry": "bar",
+ "run": {
+  "wol battery --json": [
+   "{\"present\": true, \"percent\": 70, \"charge\": \"Charging\", \"health\": 91, \"cycles\": 312, \"design_mwh\": 57000, \"full_mwh\": 51870}",
+   "{\"present\": true, \"percent\": 80, \"charge\": \"Charging\", \"health\": 91, \"cycles\": 312, \"design_mwh\": 57000, \"full_mwh\": 51870}",
+   "{\"present\": true, \"percent\": 85, \"charge\": \"Charging\", \"health\": 91, \"cycles\": 312, \"design_mwh\": 57000, \"full_mwh\": 51870}",
+   "{\"present\": true, \"percent\": 84, \"charge\": \"Discharging\", \"health\": 91, \"cycles\": 312, \"design_mwh\": 57000, \"full_mwh\": 51870, \"minutes_left\": 250}",
+   "{\"present\": true, \"percent\": 81, \"charge\": \"Charging\", \"health\": 91, \"cycles\": 312, \"design_mwh\": 57000, \"full_mwh\": 51870}"
+  ]
+ },
+ "steps": [
+  {
+   "do": "render",
+   "now": [
+    2026,
+    11,
+    5,
+    4,
+    14,
+    0,
+    0
+   ]
+  },
+  {
+   "do": "render"
+  },
+  {
+   "do": "render"
+  },
+  {
+   "do": "render"
+  },
+  {
+   "do": "popover"
+  },
+  {
+   "do": "render"
+  }
+ ],
+ "expect": [
+  "notify: Battery at 80% | Unplug the charger now",
+  "\"text\":\"Unplug\"",
+  "about 4 h 10 min left",
+  "notify: Battery at 81%",
+  "Health 91%",
+  "312 charge cycles",
+  "Holds 51.9 Wh of the 57.0 Wh it was made for"
+ ],
+ "absent": [
+  "Battery at 85%",
+  "ERROR"
+ ],
+ "plugin": "wonderlandos.battery",
+ "permissions": [
+  "run",
+  "notifications"
+ ]
+}

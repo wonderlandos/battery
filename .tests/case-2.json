@@ -1,0 +1,63 @@
+{
+ "name": "the chosen charge and the switch are kept",
+ "script": "bar.lua",
+ "kind": "menubar",
+ "entry": "bar",
+ "state": {
+  "limit": 90,
+  "remind": true
+ },
+ "run": {
+  "wol battery --json": [
+   "{\"present\": true, \"percent\": 85, \"charge\": \"Charging\", \"health\": 91, \"cycles\": 312, \"design_mwh\": 57000, \"full_mwh\": 51870}"
+  ]
+ },
+ "steps": [
+  {
+   "do": "render",
+   "now": [
+    2026,
+    11,
+    5,
+    4,
+    14,
+    0,
+    0
+   ]
+  },
+  {
+   "do": "popover"
+  },
+  {
+   "do": "change",
+   "part": 2,
+   "number": 63
+  },
+  {
+   "do": "popover"
+  },
+  {
+   "do": "change",
+   "part": 1,
+   "on": false
+  },
+  {
+   "do": "render"
+  }
+ ],
+ "expect": [
+  "Remind me to unplug at 90%",
+  "Remind me to unplug at 65%",
+  "\"limit\":65",
+  "\"remind\":false"
+ ],
+ "absent": [
+  "notify:",
+  "ERROR"
+ ],
+ "plugin": "wonderlandos.battery",
+ "permissions": [
+  "run",
+  "notifications"
+ ]
+}
